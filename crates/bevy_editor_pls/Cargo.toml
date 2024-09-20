@@ -24,6 +24,7 @@ bevy_editor_pls_core.workspace = true
 bevy_editor_pls_default_windows = { workspace = true, optional = true }
 bevy = "0.14"  
 bevy_asset_loader = "0.21" 
+bevy_stl = "0.14"
 egui.workspace = true
 transform-gizmo-bevy.workspace = true
 # bevy_framepace = { version = "0.12", default-features = false }

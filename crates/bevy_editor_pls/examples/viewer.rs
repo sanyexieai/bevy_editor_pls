@@ -1,13 +1,12 @@
 use bevy::{
-    diagnostic::{EntityCountDiagnosticsPlugin, FrameTimeDiagnosticsPlugin},
-    prelude::*,
-    render::{
+    asset::AssetPath, diagnostic::{EntityCountDiagnosticsPlugin, FrameTimeDiagnosticsPlugin}, prelude::*, render::{
         render_resource::WgpuFeatures,
         settings::{RenderCreation, WgpuSettings},
         RenderPlugin,
-    },
+    }
 };
 use bevy_editor_pls::prelude::*;
+use egui::epaint::tessellator::{path, Path};
 fn main() {
     // enable wireframe rendering
     let mut wgpu_settings = WgpuSettings::default();
@@ -22,6 +21,7 @@ fn main() {
             EditorPlugin::new(),
             FrameTimeDiagnosticsPlugin,
             EntityCountDiagnosticsPlugin,
+            bevy_stl::StlPlugin
         ))
         .add_systems(Startup, setup)
         .add_systems(Update, (file_drag_and_drop_system))
@@ -66,22 +66,41 @@ fn setup(
 
 
 fn file_drag_and_drop_system(
-    mut events: EventReader<FileDragAndDrop> ,
+    mut events: EventReader<FileDragAndDrop>,
     mut commands: Commands,
-    asset_server: Res<AssetServer>) {
+    asset_server: Res<AssetServer>,
+) {
     for event in events.read() {
         info!("{:?}", event);
         match event {
             FileDragAndDrop::DroppedFile { path_buf, .. } => {
-                let scene_handle = asset_server.load(GltfAssetLabel::Scene(0).from_asset(path_buf.to_string_lossy().to_string()));
-                // mesh
-                commands.spawn(SceneBundle {
-                    scene: scene_handle,
-                    ..default()
-                });
-            }
-            _ => {},
-        }
+                let path = path_buf.to_string_lossy().to_string();
+                // 获取文件后缀
+                let file_extension = path.split('.').last().unwrap_or("");
 
+                match file_extension {
+                    "glb" | "gltf" => {
+                        let scene_handle = asset_server.load(GltfAssetLabel::Scene(0).from_asset(path));
+                        // 在这里确保 scene_handle 只在加载成功后使用
+                        commands.spawn(SceneBundle {
+                            scene: scene_handle,
+                            ..default()
+                        });
+                    }
+                    "stl" => {
+                        let mesh_handle = asset_server.load(path);
+                        commands.spawn(PbrBundle {
+                            mesh: mesh_handle,
+                            ..default()
+                        });
+                    }
+                    _ => {
+                        info!("Unsupported file type: {}", file_extension);
+                        return;
+                    }
+                }
+            }
+            _ => {}
+        }
     }
 }
