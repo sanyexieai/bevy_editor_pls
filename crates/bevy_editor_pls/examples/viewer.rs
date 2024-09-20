@@ -7,6 +7,8 @@ use bevy::{
 };
 use bevy_editor_pls::prelude::*;
 use egui::epaint::tessellator::{path, Path};
+use bevy_stl::StlPlugin;
+use bevy_obj::ObjPlugin;
 fn main() {
     // enable wireframe rendering
     let mut wgpu_settings = WgpuSettings::default();
@@ -21,7 +23,8 @@ fn main() {
             EditorPlugin::new(),
             FrameTimeDiagnosticsPlugin,
             EntityCountDiagnosticsPlugin,
-            bevy_stl::StlPlugin
+            StlPlugin,
+            ObjPlugin
         ))
         .add_systems(Startup, setup)
         .add_systems(Update, (file_drag_and_drop_system))
@@ -87,7 +90,7 @@ fn file_drag_and_drop_system(
                             ..default()
                         });
                     }
-                    "stl" => {
+                    "stl"|"obj" => {
                         let mesh_handle = asset_server.load(path);
                         commands.spawn(PbrBundle {
                             mesh: mesh_handle,
