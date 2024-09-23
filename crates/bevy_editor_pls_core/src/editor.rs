@@ -369,8 +369,7 @@ impl Editor {
                         now_active: self.active,
                     });
                 }
-
-                ui.menu_button("Open window", |ui| {
+                ui.menu_button(t!("open"), |ui| {
                     for (&_, window) in self.windows.iter() {
                         let cx = EditorWindowContext {
                             window_states: &mut self.window_states,

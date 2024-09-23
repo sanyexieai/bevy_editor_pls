@@ -9,6 +9,7 @@ use bevy_editor_pls::prelude::*;
 use egui::epaint::tessellator::{path, Path};
 use bevy_stl::StlPlugin;
 use bevy_obj::ObjPlugin;
+
 fn main() {
     // enable wireframe rendering
     let mut wgpu_settings = WgpuSettings::default();
@@ -27,7 +28,7 @@ fn main() {
             ObjPlugin
         ))
         .add_systems(Startup, setup)
-        .add_systems(Update, (file_drag_and_drop_system))
+        .add_systems(Update, file_drag_and_drop_system)
         .run();
 }
 
@@ -37,20 +38,6 @@ fn setup(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    // plane
-    // commands.spawn(PbrBundle {
-    //     // mesh: meshes.add(Mesh::from(Plane3d::new(Vec3::Y, Vec2::new(2.5, 2.5)).mesh())),
-    //     mesh: meshes.add(Plane3d::new(Vec3::Y, Vec2::new(2.5, 2.5)).mesh()),
-    //     material: materials.add(Color::srgb(0.3, 0.5, 0.3)),
-    //     ..Default::default()
-    // });
-    // // cube
-    // commands.spawn(PbrBundle {
-    //     mesh: meshes.add(Mesh::from(Cuboid::from_size(Vec3::ONE))),
-    //     material: materials.add(Color::srgb(0.8, 0.7, 0.6)),
-    //     transform: Transform::from_xyz(0.0, 0.5, 0.0),
-    //     ..Default::default()
-    // });
     // light
     commands.spawn(PointLightBundle {
         transform: Transform::from_xyz(4.0, 8.0, 4.0),
