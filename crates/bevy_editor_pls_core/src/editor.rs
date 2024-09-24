@@ -8,6 +8,8 @@ use indexmap::IndexMap;
 
 use crate::editor_window::{EditorWindow, EditorWindowContext};
 
+use rust_i18n::t;
+
 #[non_exhaustive]
 #[derive(Event)]
 pub enum EditorEvent {
@@ -280,6 +282,13 @@ impl Editor {
                 return;
             };
             let egui_context = egui_context.get_mut().clone();
+            let mut fonts = egui::FontDefinitions::default();
+            fonts.font_data.insert(
+                "my_font".to_owned(),
+                egui::FontData::from_static(include_bytes!("../../i18n/assets/fonts/Deng.ttf")),
+            );
+            fonts.families.get_mut(&egui::FontFamily::Proportional).unwrap().insert(0, "my_font".to_owned());
+            egui_context.set_fonts(fonts);
 
             world.resource_scope(
                 |world, mut editor_internal_state: Mut<EditorInternalState>| {

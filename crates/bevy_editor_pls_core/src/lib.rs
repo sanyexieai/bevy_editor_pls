@@ -17,8 +17,6 @@ use editor::EditorInternalState;
 use editor_window::EditorWindow;
 
 pub use editor::{Editor, EditorEvent};
-#[macro_use]
-extern crate rust_i18n;
 i18n::init!();
 
 

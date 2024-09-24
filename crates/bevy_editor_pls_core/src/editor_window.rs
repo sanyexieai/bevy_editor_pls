@@ -18,7 +18,7 @@ pub trait EditorWindow: 'static {
     fn menu_ui(world: &mut World, mut cx: EditorWindowContext, ui: &mut egui::Ui) {
         let _ = world;
 
-        if ui.button(Self::NAME).clicked() {
+        if ui.button(String::from(Self::NAME)).clicked() {
             cx.open_floating_window::<Self>();
             ui.close_menu();
         }
