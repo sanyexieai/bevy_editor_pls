@@ -29,9 +29,6 @@ fn main() {
         .run();
 }
 
-const NORMAL_BUTTON: Color = Color::srgb(0.15, 0.15, 0.15);
-const HOVERED_BUTTON: Color = Color::srgb(0.25, 0.25, 0.25);
-const PRESSED_BUTTON: Color = Color::srgb(0.35, 0.75, 0.35);
 /// set up a simple 3D scene
 fn setup(
     mut commands: Commands,

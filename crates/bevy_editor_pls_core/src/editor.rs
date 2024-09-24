@@ -378,7 +378,7 @@ impl Editor {
                         now_active: self.active,
                     });
                 }
-                ui.menu_button(t!("open"), |ui| {
+                ui.menu_button(t!("Open"), |ui| {
                     for (&_, window) in self.windows.iter() {
                         let cx = EditorWindowContext {
                             window_states: &mut self.window_states,
@@ -426,7 +426,7 @@ impl Editor {
         internal_state: &mut EditorInternalState,
         tab: TreeTab,
     ) {
-        if ui.button("Pop out").clicked() {
+        if ui.button(&String::from(t!("Pop out"))).clicked() {
             if let TreeTab::CustomWindow(window) = tab {
                 let id = internal_state.next_floating_window_id();
                 internal_state.floating_windows.push(FloatingWindow {

@@ -1,6 +1,7 @@
 use bevy::prelude::{App, World};
 use bevy::utils::HashMap;
 use bevy_inspector_egui::egui;
+use i18n::t;
 use std::any::{Any, TypeId};
 
 use crate::editor::EditorWindowState;
@@ -8,7 +9,7 @@ use crate::editor::EditorWindowState;
 /// An editor window type
 pub trait EditorWindow: 'static {
     type State: Default + Any + Send + Sync;
-
+    
     const NAME: &'static str;
     const DEFAULT_SIZE: (f32, f32) = (0.0, 0.0);
 
@@ -17,12 +18,13 @@ pub trait EditorWindow: 'static {
     /// Ui shown in the `Open Window` menu item. By default opens the window as a floating window.
     fn menu_ui(world: &mut World, mut cx: EditorWindowContext, ui: &mut egui::Ui) {
         let _ = world;
-
-        if ui.button(String::from(Self::NAME)).clicked() {
+        let text = t!(Self::NAME);
+        if ui.button(String::from(text)).clicked() {
             cx.open_floating_window::<Self>();
             ui.close_menu();
         }
     }
+
     /// Ui shown in the viewport toolbar.
     fn viewport_toolbar_ui(world: &mut World, cx: EditorWindowContext, ui: &mut egui::Ui) {
         let _ = (world, cx, ui);

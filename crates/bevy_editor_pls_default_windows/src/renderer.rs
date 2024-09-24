@@ -5,6 +5,7 @@ use bevy_inspector_egui::{
     inspector_options::std_options::NumberOptions,
     reflect_inspector::{Context, InspectorUi},
 };
+use i18n::t;
 
 pub struct RendererWindow;
 
@@ -23,12 +24,12 @@ impl EditorWindow for RendererWindow {
             let limits = render_device.limits();
             let features = render_device.features();
 
-            ui.heading("Settings");
+            ui.heading(&String::from(t!("Settings")));
             egui::Grid::new("directional_light_shadow_map").show(ui, |ui| {
                 let mut directional_light_shadow_map = world
                     .get_resource_mut::<DirectionalLightShadowMap>()
                     .unwrap();
-                ui.label("Directional light shadow map size");
+                ui.label(&String::from(t!("Directional light shadow map size")));
                 let mut size = directional_light_shadow_map.size;
 
                 let mut context = Context::default();
@@ -44,10 +45,10 @@ impl EditorWindow for RendererWindow {
                 ui.end_row();
             });
 
-            ui.collapsing("Limits", |ui| {
+            ui.collapsing(&String::from(t!("Limits")), |ui| {
                 ui.label(RichText::new(format!("{:#?}", limits)).monospace());
             });
-            ui.collapsing("Features", |ui| {
+            ui.collapsing(&String::from(t!("Features")), |ui| {
                 let features = format!("{:#?}", features);
                 for feature in features.split(" | ") {
                     ui.label(RichText::new(format!("- {}", feature)).monospace());

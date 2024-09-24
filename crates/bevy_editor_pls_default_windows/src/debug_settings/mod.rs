@@ -11,6 +11,7 @@ use bevy_inspector_egui::{
     egui::{self, Grid},
     reflect_inspector::ui_for_value,
 };
+use i18n::t;
 
 pub struct DebugSettingsWindowState {
     pub pause_time: bool,
@@ -100,7 +101,7 @@ fn debug_ui_options(
     type_registry: &TypeRegistry,
 ) {
     Grid::new("debug settings").show(ui, |ui| {
-        ui.label("Pause time");
+        ui.label(&String::from(t!("Pause time")));
 
         let mut time = world.resource_mut::<Time<Virtual>>();
 
@@ -112,7 +113,7 @@ fn debug_ui_options(
             }
         }
         ui.end_row();
-        ui.label("Game Speed");
+        ui.label(&String::from(t!("Game Speed")));
 
         let mut speed = time.relative_speed_f64();
         if ui
@@ -137,9 +138,9 @@ fn debug_ui_options(
             });
 
         if wireframe_enabled {
-            ui.label("Wireframes");
+            ui.label(&String::from(t!("Wireframes")));
         } else {
-            ui.label("Wireframes (enable POLYGON_MODE_LINE feature)");
+            ui.label(&String::from(t!("Wireframes (enable POLYGON_MODE_LINE feature)")));
         }
         ui.add_enabled_ui(wireframe_enabled, |ui| {
             if ui_for_value(&mut state.wireframes, ui, type_registry) {
@@ -154,7 +155,7 @@ fn debug_ui_options(
             state.highlight_selected = false;
         }
 
-        ui.label("Highlight selected entity");
+        ui.label(&String::from(t!("Highlight selected entity")));
         ui.add_enabled_ui(wireframe_enabled, |ui| {
             ui.checkbox(&mut state.highlight_selected, "");
         });
@@ -181,19 +182,19 @@ fn debug_ui_debugdump(world: &mut World, state: &mut DebugSettingsWindowState, u
     };
 
     ui.vertical(|ui| {
-        if ui.button("Open `Update` schedule").clicked() {
+        if ui.button(&String::from(t!("Open `Update` schedule"))).clicked() {
             let schedule_graph = world.get_resource::<debugdump::DotGraphs>().unwrap();
             if let Err(e) = open_dot(&schedule_graph.update_schedule, "schedule_main") {
                 state.open_debugdump_status = Some(e);
             }
         }
-        if ui.button("Open `FixedUpdate` schedule").clicked() {
+        if ui.button(&String::from(t!("Open `FixedUpdate` schedule"))).clicked() {
             let schedule_graph = world.get_resource::<debugdump::DotGraphs>().unwrap();
             if let Err(e) = open_dot(&schedule_graph.fixed_update_schedule, "schedule_fixed") {
                 state.open_debugdump_status = Some(e);
             }
         }
-        if ui.button("Open render extract schedule").clicked() {
+        if ui.button(&String::from(t!("Open render extract schedule"))).clicked() {
             let schedule_graph = world.get_resource::<debugdump::DotGraphs>().unwrap();
             if let Err(e) = open_dot(
                 &schedule_graph.render_extract_schedule,
@@ -202,13 +203,13 @@ fn debug_ui_debugdump(world: &mut World, state: &mut DebugSettingsWindowState, u
                 state.open_debugdump_status = Some(e);
             }
         }
-        if ui.button("Open render main schedule").clicked() {
+        if ui.button(&String::from(t!("Open render main schedule"))).clicked() {
             let schedule_graph = world.get_resource::<debugdump::DotGraphs>().unwrap();
             if let Err(e) = open_dot(&schedule_graph.render_main_schedule, "schedule_render_main") {
                 state.open_debugdump_status = Some(e);
             }
         }
-        if ui.button("Open render graph").clicked() {
+        if ui.button(&String::from(t!("Open render graph"))).clicked() {
             let schedule_graph = world.get_resource::<debugdump::DotGraphs>().unwrap();
             if let Err(e) = open_dot(&schedule_graph.render_graph, "render_graph") {
                 state.open_debugdump_status = Some(e);
@@ -220,20 +221,20 @@ fn debug_ui_debugdump(world: &mut World, state: &mut DebugSettingsWindowState, u
         let msg = match error {
             DebugdumpError::DotNotFound => {
                 ui.vertical(|ui| {
-                    ui.label("Could not generate svg.");
-                    ui.label("Make sure to install the `dot` program from");
+                    ui.label(&String::from(t!("Could not generate svg.")));
+                    ui.label(&String::from(t!("Make sure to install the `dot` program from")));
                     ui.hyperlink("https://graphviz.org/download/");
-                    ui.label("and make it available in your PATH.");
+                    ui.label(&String::from(t!("and make it available in your PATH.")));
                 });
                 return;
             }
             DebugdumpError::OpenError(e) => e.to_string(),
             DebugdumpError::IO(e) => e.to_string(),
             DebugdumpError::ScheduleNotFound => {
-                ui.label("Schedule does not exist");
+                ui.label(&String::from(t!("Schedule does not exist")));
                 return;
             }
         };
-        ui.label(egui::RichText::new(msg).color(egui::Color32::RED));
+        ui.label(egui::RichText::new(&String::from(t!(msg))).color(egui::Color32::RED));
     }
 }

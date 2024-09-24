@@ -14,6 +14,7 @@ use bevy_editor_pls_core::{
     editor_window::{EditorWindow, EditorWindowContext},
     Editor,
 };
+use i18n::t;
 // use bevy_mod_picking::backends::egui::EguiPointer;
 // use bevy_mod_picking::prelude::{IsPointerEvent, PointerClick, PointerButton};
 
@@ -156,15 +157,15 @@ impl<'a> Hierarchy<'a> {
             type_registry: self.type_registry,
             selected,
             context_menu: Some(&mut |ui, entity, world, rename_info| {
-                if ui.button("Despawn").clicked() {
+                if ui.button(t!("Despawn")).clicked() {
                     despawn_recursive = Some(entity);
                 }
 
-                if ui.button("Remove keeping children").clicked() {
+                if ui.button(t!("Remove keeping children")).clicked() {
                     despawn = Some(entity);
                 }
 
-                if ui.button("Rename").clicked() {
+                if ui.button(t!("Rename")).clicked() {
                     let entity_name = guess_entity_name(world, entity);
                     *rename_info = Some(RenameInfo {
                         entity,
@@ -175,7 +176,8 @@ impl<'a> Hierarchy<'a> {
                 }
 
                 if let Some(add_state) = self.add_state {
-                    ui.menu_button("Add", |ui| {
+                    let text = String::from(t!("Add"));
+                    ui.menu_button(text, |ui| {
                         if let Some(add_item) = add_ui(ui, add_state) {
                             add_item.add_to_entity(world, entity);
                             ui.close_menu();

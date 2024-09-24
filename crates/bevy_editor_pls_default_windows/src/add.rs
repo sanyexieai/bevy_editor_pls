@@ -8,6 +8,7 @@ use bevy::{
 };
 use bevy_editor_pls_core::editor_window::{EditorWindow, EditorWindowContext};
 use bevy_inspector_egui::egui;
+use i18n::t;
 use indexmap::IndexMap;
 
 use crate::hierarchy::HierarchyWindow;
@@ -86,8 +87,8 @@ impl EditorWindow for AddWindow {
 
 fn add_ui_button(world: &mut World, ui: &mut egui::Ui, mut cx: EditorWindowContext) {
     let state = cx.state::<AddWindow>().unwrap();
-
-    let response = ui.menu_button("Add", |ui| {
+    let text = String::from(t!("Add"));
+    let response = ui.menu_button(text, |ui| {
         add_ui(ui, state).map(|add_item| {
             let entity = world.spawn_empty().id();
             add_item.add_to_entity(world, entity);
@@ -112,7 +113,8 @@ pub fn add_ui<'a>(ui: &mut egui::Ui, state: &'a AddWindowState) -> Option<&'a Ad
                 }
             }
         } else {
-            let value = ui.menu_button(*section_name, |ui| {
+            let text = String::from(t!(*section_name));
+            let value = ui.menu_button(text, |ui| {
                 for item in items {
                     if ui.button(item.name.as_ref()).clicked() {
                         ui.close_menu();

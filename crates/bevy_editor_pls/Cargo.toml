@@ -29,6 +29,10 @@ bevy_obj = "0.14"
 egui.workspace = true
 transform-gizmo-bevy.workspace = true
 # bevy_framepace = { version = "0.12", default-features = false }
+egui_dock.workspace = true
+rust-i18n.workspace = true
+i18n.workspace = true
+
 
 [dev-dependencies]
 bevy = { version = "0.14", default-features = false, features = [

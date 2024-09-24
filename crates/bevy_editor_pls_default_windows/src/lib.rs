@@ -12,4 +12,4 @@ pub mod inspector;
 pub mod renderer;
 pub mod resources;
 pub mod scenes;
-// i18n::init!();
+i18n::init!();

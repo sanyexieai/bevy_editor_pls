@@ -8,6 +8,7 @@ use bevy::reflect::TypeRegistry;
 use bevy_editor_pls_core::editor_window::{EditorWindow, EditorWindowContext};
 use bevy_inspector_egui::bevy_inspector::hierarchy::SelectedEntities;
 use bevy_inspector_egui::{bevy_inspector, egui};
+use i18n::t;
 
 #[derive(Eq, PartialEq)]
 pub enum InspectorSelection {
@@ -63,7 +64,7 @@ fn inspector(
     egui::ScrollArea::vertical().show(ui, |ui| match *selected {
         InspectorSelection::Entities => match selected_entities.as_slice() {
             [] => {
-                ui.label("No entity selected");
+                ui.label(&String::from(t!("No entity selected")));
             }
             &[entity] => {
                 bevy_inspector::ui_for_entity(world, entity, ui);

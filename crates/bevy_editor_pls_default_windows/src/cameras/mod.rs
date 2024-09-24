@@ -13,6 +13,7 @@ use bevy_editor_pls_core::{
     Editor, EditorEvent,
 };
 use bevy_inspector_egui::egui;
+use i18n::t;
 use transform_gizmo_bevy::GizmoCamera;
 // use bevy_mod_picking::prelude::PickRaycastSource;
 
@@ -55,7 +56,7 @@ pub enum EditorCamKind {
 impl EditorCamKind {
     fn name(self) -> &'static str {
         match self {
-            EditorCamKind::D2PanZoom => "2D (Pan/Zoom)",
+            EditorCamKind::D2PanZoom =>"2D (Pan/Zoom)",
             EditorCamKind::D3Free => "3D (Free)",
             EditorCamKind::D3PanOrbit => "3D (Pan/Orbit)",
         }
@@ -94,7 +95,8 @@ impl EditorWindow for CameraWindow {
 
     fn viewport_toolbar_ui(world: &mut World, mut cx: EditorWindowContext, ui: &mut egui::Ui) {
         let state = cx.state_mut::<CameraWindow>().unwrap();
-        ui.menu_button(state.editor_cam.name(), |ui| {
+        let text: String = String::from(t!(state.editor_cam.name()));
+        ui.menu_button(text, |ui| {
             for camera in EditorCamKind::all() {
                 ui.horizontal(|ui| {
                     if ui.button(camera.name()).clicked() {
@@ -196,7 +198,7 @@ fn cameras_ui(ui: &mut egui::Ui, world: &mut World) {
             //     ui.set_enabled(false);
             // }
 
-            ui.label(format!("{}: {:?}", "Camera", cam));
+            ui.label(format!("{}: {:?}", &String::from(t!("Camera")), cam));
         });
     }
 }
@@ -231,7 +233,7 @@ fn spawn_editor_cameras(mut commands: Commands, editor: Res<Editor>) {
         EditorCamera,
         EditorCamera3dFree,
         HideInEditor,
-        Name::new("Editor Camera 3D Free"),
+        Name::new(String::from(t!("Editor Camera 3D Free"))),
         NotInScene,
         GizmoCamera,
         render_layers.clone(),
@@ -254,7 +256,7 @@ fn spawn_editor_cameras(mut commands: Commands, editor: Res<Editor>) {
         EditorCamera,
         EditorCamera3dPanOrbit,
         HideInEditor,
-        Name::new("Editor Camera 3D Pan/Orbit"),
+        Name::new(String::from(t!("Editor Camera 3D Pan/Orbit"))),
         NotInScene,
         GizmoCamera,
         render_layers.clone(),
@@ -276,7 +278,7 @@ fn spawn_editor_cameras(mut commands: Commands, editor: Res<Editor>) {
         EditorCamera,
         EditorCamera2dPanZoom,
         HideInEditor,
-        Name::new("Editor Camera 2D Pan/Zoom"),
+        Name::new(String::from(t!("Editor Camera 2D Pan/Zoom"))),
         NotInScene,
         GizmoCamera,
         render_layers,

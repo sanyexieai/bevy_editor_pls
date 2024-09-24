@@ -1,5 +1,6 @@
 use bevy::{prelude::*, utils::HashMap};
 use bevy_editor_pls_core::{editor_window::EditorWindow, Editor, EditorEvent};
+use i18n::t;
 
 #[derive(Debug)]
 pub enum Button {
@@ -41,12 +42,12 @@ impl BindingCondition {
 impl std::fmt::Display for BindingCondition {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let str = match self {
-            BindingCondition::InViewport(true) => "mouse in viewport",
-            BindingCondition::InViewport(false) => "mouse not in viewport",
-            BindingCondition::EditorActive(true) => "editor is active",
-            BindingCondition::EditorActive(false) => "editor is not active",
-            BindingCondition::ListeningForText(true) => "a ui field is listening for text",
-            BindingCondition::ListeningForText(false) => "no ui fields are listening for text",
+            BindingCondition::InViewport(true) => &String::from(t!("mouse in viewport")),
+            BindingCondition::InViewport(false) => &String::from(t!("mouse not in viewport")),
+            BindingCondition::EditorActive(true) => &String::from(t!("editor is active")),
+            BindingCondition::EditorActive(false) =>&String::from(t!("editor is not active")),
+            BindingCondition::ListeningForText(true) =>&String::from(t!("a ui field is listening for text")),
+            BindingCondition::ListeningForText(false) =>&String::from(t!("no ui fields are listening for text")),
         };
         f.write_str(str)
     }

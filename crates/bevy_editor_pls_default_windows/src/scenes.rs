@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 use bevy_editor_pls_core::editor_window::{EditorWindow, EditorWindowContext};
 use bevy_inspector_egui::egui::{self, RichText};
+use i18n::t;
 
 const DEFAULT_FILENAME: &str = "scene.scn.ron";
 
@@ -34,7 +35,7 @@ impl EditorWindow for SceneWindow {
 
             let enter_pressed = ui.input(|input| input.key_pressed(egui::Key::Enter));
 
-            if ui.button("Save").clicked() || enter_pressed {
+            if ui.button(&String::from(t!("Save"))).clicked() || enter_pressed {
                 let filename = if state.filename.is_empty() {
                     DEFAULT_FILENAME
                 } else {
@@ -49,7 +50,7 @@ impl EditorWindow for SceneWindow {
         if let Some(status) = &state.scene_save_result {
             match status {
                 Ok(()) => {
-                    ui.label(RichText::new("Success!").color(egui::Color32::GREEN));
+                    ui.label(RichText::new(&String::from(t!("Success!"))).color(egui::Color32::GREEN));
                 }
                 Err(error) => {
                     ui.label(RichText::new(error.to_string()).color(egui::Color32::RED));

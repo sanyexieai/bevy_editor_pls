@@ -1,0 +1,153 @@
+_version: 2
+Add:
+  en: Add
+  zh-CN: 添加
+Camera:
+  en: Camera
+  zh-CN: 相机
+Could not generate svg.:
+  en: 'Could not generate svg.'
+  zh-CN: 无法生成 svg。
+Despawn:
+  en: Despawn
+  zh-CN: 回收
+Directional light shadow map size:
+  en: Directional light shadow map size
+  zh-CN: 平行光阴影贴图尺寸
+Editor Camera 2D Pan/Zoom:
+  en: Editor Camera 2D Pan/Zoom
+  zh-CN: 编辑器相机 2D 平移/缩放
+Editor Camera 3D Free:
+  en: Editor Camera 3D Free
+  zh-CN: 编辑器相机 3D 自由
+Editor Camera 3D Pan/Orbit:
+  en: Editor Camera 3D Pan/Orbit
+  zh-CN: 编辑器相机 3D 平移/轨道
+Features:
+  en: Features
+  zh-CN: 功能
+Game Speed:
+  en: Game Speed
+  zh-CN: 游戏速度
+Highlight selected entity:
+  en: Highlight selected entity
+  zh-CN: 高亮选中的实体
+Limits:
+  en: Limits
+  zh-CN: 限制
+Make sure to install the `dot` program from:
+  en: Make sure to install the `dot` program from
+  zh-CN: 请确保安装了 `dot` 程序
+No entity selected:
+  en: No entity selected
+  zh-CN: 未选中实体
+Open:
+  en: Open
+  zh-CN: 打开
+Open `FixedUpdate` schedule:
+  en: Open `FixedUpdate` schedule
+  zh-CN: 打开 `FixedUpdate` 调度
+Open `Update` schedule:
+  en: Open `Update` schedule
+  zh-CN: 打开 `Update` 调度
+Open render extract schedule:
+  en: Open render extract schedule
+  zh-CN: 打开渲染提取调度
+Open render graph:
+  en: Open render graph
+  zh-CN: 打开渲染图
+Open render main schedule:
+  en: Open render main schedule
+  zh-CN: 打开渲染主调度
+Pause time:
+  en: Pause time
+  zh-CN: 暂停时间
+Pop out:
+  en: Pop out
+  zh-CN: 弹出
+Remove keeping children:
+  en: Remove keeping children
+  zh-CN: 保留子物体删除
+Rename:
+  en: Rename
+  zh-CN: 重命名
+Save:
+  en: Save
+  zh-CN: 保存
+Schedule does not exist:
+  en: Schedule does not exist
+  zh-CN: 调度不存在
+Settings:
+  en: Settings
+  zh-CN: 设置
+Success!:
+  en: Success!
+  zh-CN: 成功！
+Wireframes:
+  en: Wireframes
+  zh-CN: 线框
+Wireframes (enable POLYGON_MODE_LINE feature):
+  en: Wireframes (enable POLYGON_MODE_LINE feature)
+  zh-CN: 线框（启用 POLYGON_MODE_LINE 功能）
+
+a ui field is listening for text:
+  en: a ui field is listening for text
+  zh-CN: 一个 UI 字段正在监听文本
+  
+and make it available in your PATH.:
+  en: ''
+  zh-CN: 并确保它在你的 PATH 中可用。
+editor is active:
+  en: editor is active
+  zh-CN: 编辑器已激活
+editor is not active:
+  en: editor is not active
+  zh-CN: 编辑器未激活
+mouse in viewport:
+  en: mouse in viewport
+  zh-CN: 鼠标在视口内
+mouse not in viewport:
+  en: mouse not in viewport
+  zh-CN: 鼠标不在视口内
+no ui fields are listening for text:
+  en: no ui fields are listening for text
+  zh-CN: 没有 UI 字段正在监听文本
+
+Controls:
+  en: Controls
+  zh-CN: 控件
+
+Assets:
+  en: Assets
+  zh-CN: 素材
+
+Diagnostics:
+  en: Diagnostics
+  zh-CN: 诊断
+Gizmos:
+  en: Gizmos
+  zh-CN: 图标
+Inspector:
+  en: Inspector
+  zh-CN: 检视面板
+  Renderer:
+  en: Renderer
+  zh-CN: 渲染器
+Resources:
+  en: Resources
+  zh-CN: 资源
+Scene:
+  en: Scene
+  zh-CN: 场景
+Cameras:
+  en: Cameras
+  zh-CN: 相机
+Debug settings:
+  en: Debug settings
+  zh-CN: 调试设置
+Hierarchy:
+  en: Hierarchy
+  zh-CN: 层级
+Empty:
+  en: Empty
+  zh-CN: 空

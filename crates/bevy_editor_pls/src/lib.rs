@@ -18,6 +18,8 @@ pub use egui;
 #[doc(inline)]
 pub use bevy_editor_pls_default_windows as default_windows;
 
+i18n::init!();
+
 /// Commonly used types and extension traits
 pub mod prelude {
     pub use crate::{AddEditorWindow, EditorPlugin};
