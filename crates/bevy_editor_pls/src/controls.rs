@@ -198,6 +198,7 @@ pub fn editor_controls_system(
     mut editor_events: EventWriter<EditorEvent>,
     mut editor: ResMut<Editor>,
 ) {
+    //播放
     if controls.just_pressed(
         Action::PlayPauseEditor,
         &keyboard_input,
@@ -211,7 +212,7 @@ pub fn editor_controls_system(
             now_active: !was_active,
         });
     }
-
+    //暂停
     if controls.just_pressed(
         Action::PauseUnpauseTime,
         &keyboard_input,
@@ -222,7 +223,7 @@ pub fn editor_controls_system(
             default_window.pause_time = !default_window.pause_time;
         }
     }
-
+    //聚焦
     if controls.just_pressed(
         Action::FocusSelected,
         &keyboard_input,
@@ -234,6 +235,7 @@ pub fn editor_controls_system(
 
     #[cfg(feature = "default_windows")]
     {
+        //切换gizmo平移模式
         if controls.just_pressed(
             Action::SetGizmoModeTranslate,
             &keyboard_input,
@@ -245,6 +247,7 @@ pub fn editor_controls_system(
                 .unwrap()
                 .gizmo_modes = transform_gizmo_bevy::GizmoMode::all_translate();
         }
+        //切换gizmo旋转模式
         if controls.just_pressed(
             Action::SetGizmoModeRotate,
             &keyboard_input,
@@ -256,6 +259,7 @@ pub fn editor_controls_system(
                 .unwrap()
                 .gizmo_modes = transform_gizmo_bevy::GizmoMode::all_rotate();
         }
+        //切换gizmo缩放模式
         if controls.just_pressed(
             Action::SetGizmoModeScale,
             &keyboard_input,

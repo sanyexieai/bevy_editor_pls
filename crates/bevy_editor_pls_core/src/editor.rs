@@ -451,7 +451,7 @@ impl Editor {
 
         for (i, floating_window) in floating_windows.into_iter().enumerate() {
             let id = egui::Id::new(floating_window.id);
-            let title = self.windows[&floating_window.window].name;
+            let title =String::from(t!(self.windows[&floating_window.window].name));
 
             let mut open = true;
             let default_size = self.windows[&floating_window.window].default_size;
@@ -559,9 +559,9 @@ impl egui_dock::TabViewer for TabViewer<'_> {
 
     fn title(&mut self, tab: &mut Self::Tab) -> egui::WidgetText {
         match *tab {
-            TreeTab::GameView => "Viewport".into(),
+            TreeTab::GameView => String::from("Viewport").into(),
             TreeTab::CustomWindow(window_id) => {
-                self.editor.windows.get(&window_id).unwrap().name.into()
+                String::from(t!(self.editor.windows.get(&window_id).unwrap().name)).into()
             }
         }
     }

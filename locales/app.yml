@@ -179,8 +179,8 @@ NotShadowCaster:
 NotShadowReceiver:
   en: NotShadowReceiver
   zh-CN: 不接收阴影
-Orthoraphic Camera:
-  en: Orthoraphic Camera
+Orthographic Camera:
+  en: Orthographic Camera
   zh-CN: 正交相机
 SpriteBundle:
   en: SpriteBundle
@@ -215,3 +215,6 @@ ImageBundle:
 ButtonBundle:
   en: ButtonBundle
   zh-CN: 按钮包
+Viewport:
+  en: Viewport
+  zh-CN: 主视口
