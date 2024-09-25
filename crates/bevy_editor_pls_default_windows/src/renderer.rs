@@ -46,12 +46,12 @@ impl EditorWindow for RendererWindow {
             });
 
             ui.collapsing(&String::from(t!("Limits")), |ui| {
-                ui.label(RichText::new(format!("{:#?}", limits)).monospace());
+                ui.label(RichText::new(String::from(t!(format!("{:#?}", limits)))).monospace());
             });
             ui.collapsing(&String::from(t!("Features")), |ui| {
                 let features = format!("{:#?}", features);
                 for feature in features.split(" | ") {
-                    ui.label(RichText::new(format!("- {}", feature)).monospace());
+                    ui.label(RichText::new(format!("- {}", String::from(t!(feature)) )).monospace());
                 }
             });
         });

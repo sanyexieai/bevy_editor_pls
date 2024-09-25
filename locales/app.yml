@@ -6,7 +6,7 @@ Camera:
   en: Camera
   zh-CN: 相机
 Could not generate svg.:
-  en: 'Could not generate svg.'
+  en: Could not generate svg.
   zh-CN: 无法生成 svg。
 Despawn:
   en: Despawn
@@ -89,13 +89,11 @@ Wireframes:
 Wireframes (enable POLYGON_MODE_LINE feature):
   en: Wireframes (enable POLYGON_MODE_LINE feature)
   zh-CN: 线框（启用 POLYGON_MODE_LINE 功能）
-
 a ui field is listening for text:
   en: a ui field is listening for text
   zh-CN: 一个 UI 字段正在监听文本
-  
 and make it available in your PATH.:
-  en: ''
+  en: and make it available in your PATH.
   zh-CN: 并确保它在你的 PATH 中可用。
 editor is active:
   en: editor is active
@@ -112,15 +110,12 @@ mouse not in viewport:
 no ui fields are listening for text:
   en: no ui fields are listening for text
   zh-CN: 没有 UI 字段正在监听文本
-
 Controls:
   en: Controls
   zh-CN: 控件
-
 Assets:
   en: Assets
   zh-CN: 素材
-
 Diagnostics:
   en: Diagnostics
   zh-CN: 诊断
@@ -130,7 +125,7 @@ Gizmos:
 Inspector:
   en: Inspector
   zh-CN: 检视面板
-  Renderer:
+Renderer:
   en: Renderer
   zh-CN: 渲染器
 Resources:
@@ -138,6 +133,9 @@ Resources:
   zh-CN: 资源
 Scene:
   en: Scene
+  zh-CN: 场景
+Scenes:
+  en: Scenes
   zh-CN: 场景
 Cameras:
   en: Cameras
@@ -151,3 +149,69 @@ Hierarchy:
 Empty:
   en: Empty
   zh-CN: 空
+NotInScene:
+  en: NotInScene
+  zh-CN: 不在场景中
+Core:
+  en: Core
+  zh-CN: 核心
+Name:
+  en: Name
+  zh-CN: 名称
+Transform:
+  en: Transform
+  zh-CN: 变换
+Rendering:
+  en: Rendering
+  zh-CN: 渲染
+RenderLayers:
+  en: RenderLayers
+  zh-CN: 渲染层
+Visibility:
+  en: Visibility
+  zh-CN: 可见性
+Wireframe:
+  en: Wireframe
+  zh-CN: 线框
+NotShadowCaster:
+  en: NotShadowCaster
+  zh-CN: 不投射阴影
+NotShadowReceiver:
+  en: NotShadowReceiver
+  zh-CN: 不接收阴影
+Orthoraphic Camera:
+  en: Orthoraphic Camera
+  zh-CN: 正交相机
+SpriteBundle:
+  en: SpriteBundle
+  zh-CN: 精灵包
+Text2dBundle:
+  en: Text2dBundle
+  zh-CN: 2D 文本包
+Perspective Camera:
+  en: Perspective Camera
+  zh-CN: 透视相机
+PointLightBundle:
+  en: PointLightBundle
+  zh-CN: 点光源包
+DirectionalLightBundle:
+  en: DirectionalLightBundle
+  zh-CN: 平行光包
+PbrBundle:
+  en: PbrBundle
+  zh-CN: PBR 包
+Cube:
+  en: Cube
+  zh-CN: 立方体
+NodeBundle:
+  en: NodeBundle
+  zh-CN: 节点包
+TextBundle:
+  en: TextBundle
+  zh-CN: 文本包
+ImageBundle:
+  en: ImageBundle
+  zh-CN: 图片包
+ButtonBundle:
+  en: ButtonBundle
+  zh-CN: 按钮包

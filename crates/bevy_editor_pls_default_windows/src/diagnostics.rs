@@ -1,6 +1,7 @@
 use bevy::{diagnostic::DiagnosticsStore, prelude::*};
 use bevy_editor_pls_core::editor_window::{EditorWindow, EditorWindowContext};
 use bevy_inspector_egui::egui;
+use i18n::t;
 
 pub struct DiagnosticsWindow;
 impl EditorWindow for DiagnosticsWindow {
@@ -11,7 +12,7 @@ impl EditorWindow for DiagnosticsWindow {
         let diagnostics = match world.get_resource::<DiagnosticsStore>() {
             Some(diagnostics) => diagnostics,
             None => {
-                ui.label("Diagnostics resource not available");
+                ui.label(String::from(t!("Diagnostics resource not available")));
                 return;
             }
         };
@@ -24,7 +25,7 @@ fn diagnostic_ui(ui: &mut egui::Ui, diagnostics: &DiagnosticsStore) {
         let mut has_diagnostics = false;
         for diagnostic in diagnostics.iter() {
             has_diagnostics = true;
-            ui.label(diagnostic.path().as_str());
+            ui.label(String::from(t!(diagnostic.path().as_str())));
             if let Some(average) = diagnostic.average() {
                 ui.label(format!("{:.2}", average));
             }
@@ -33,11 +34,12 @@ fn diagnostic_ui(ui: &mut egui::Ui, diagnostics: &DiagnosticsStore) {
 
         if !has_diagnostics {
             ui.label(
-                r#"No diagnostics found. Possible plugins to add:
+                String::from(t!(r#"No diagnostics found. Possible plugins to add:
             - `FrameTimeDiagnosticsPlugin`
             - `EntityCountDiagnisticsPlugin`
             - `AssetCountDiagnosticsPlugin`
-            "#,
+            "#))
+                ,
             );
         }
     });

@@ -107,7 +107,7 @@ pub fn add_ui<'a>(ui: &mut egui::Ui, state: &'a AddWindowState) -> Option<&'a Ad
     for (section_name, items) in &state.sections {
         if section_name.is_empty() {
             for item in items {
-                if ui.button(item.name.as_ref()).clicked() {
+                if ui.button(String::from(t!(item.name.as_ref()))).clicked() {
                     ui.close_menu();
                     return Some(item);
                 }
@@ -116,7 +116,7 @@ pub fn add_ui<'a>(ui: &mut egui::Ui, state: &'a AddWindowState) -> Option<&'a Ad
             let text = String::from(t!(*section_name));
             let value = ui.menu_button(text, |ui| {
                 for item in items {
-                    if ui.button(item.name.as_ref()).clicked() {
+                    if ui.button(String::from(t!(item.name.as_ref()))).clicked() {
                         ui.close_menu();
                         return Some(item);
                     }

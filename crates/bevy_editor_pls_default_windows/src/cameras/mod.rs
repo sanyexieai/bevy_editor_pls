@@ -99,7 +99,7 @@ impl EditorWindow for CameraWindow {
         ui.menu_button(text, |ui| {
             for camera in EditorCamKind::all() {
                 ui.horizontal(|ui| {
-                    if ui.button(camera.name()).clicked() {
+                    if ui.button(String::from(t!(camera.name()))).clicked() {
                         if state.editor_cam != camera {
                             set_active_editor_camera_marker(world, camera);
                         }
@@ -183,7 +183,7 @@ fn cameras_ui(ui: &mut egui::Ui, world: &mut World) {
 
     let prev_cams = world.resource::<PreviouslyActiveCameras>();
 
-    ui.label("Cameras");
+    ui.label( String::from(t!("Cameras")));
     for cam in prev_cams.0.iter() {
         ui.horizontal(|ui| {
             // let active = curr_active.or(prev_active);

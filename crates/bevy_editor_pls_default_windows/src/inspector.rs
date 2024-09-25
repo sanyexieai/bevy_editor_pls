@@ -76,11 +76,13 @@ fn inspector(
             }
         },
         InspectorSelection::Resource(type_id, ref name) => {
-            ui.label(name);
+            let label_text = name;
+            ui.label(t!(format!("{:#?}", label_text)));
             bevy_inspector::by_type_id::ui_for_resource(world, type_id, ui, name, type_registry)
         }
         InspectorSelection::Asset(type_id, ref name, handle) => {
-            ui.label(name);
+            let label_text = name;
+            ui.label(t!(format!("{:#?}", label_text)));
             bevy_inspector::by_type_id::ui_for_asset(world, type_id, handle, ui, type_registry);
         }
     });

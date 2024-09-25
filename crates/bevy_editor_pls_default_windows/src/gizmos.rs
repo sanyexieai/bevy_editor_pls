@@ -6,6 +6,7 @@ use bevy::{
 
 use bevy_editor_pls_core::editor_window::{EditorWindow, EditorWindowContext};
 use bevy_inspector_egui::egui;
+use i18n::t;
 use transform_gizmo_bevy::GizmoTarget;
 use transform_gizmo_bevy::{EnumSet, GizmoMode};
 
@@ -38,7 +39,7 @@ impl EditorWindow for GizmoWindow {
     const NAME: &'static str = "Gizmos";
 
     fn ui(_world: &mut World, _cx: EditorWindowContext, ui: &mut egui::Ui) {
-        ui.label("Gizmos can currently not be configured");
+        ui.label(String::from(t!("Gizmos can currently not be configured")));
         // could definitely change some settings here in the future
     }
 

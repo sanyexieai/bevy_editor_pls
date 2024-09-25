@@ -395,10 +395,10 @@ impl EditorWindow for ControlsWindow {
             Action::PauseUnpauseTime,
             Action::FocusSelected,
         ] {
-            ui.label(egui::RichText::new(action.to_string()).strong());
+            ui.label(egui::RichText::new(String::from(t!(action.to_string()))).strong());
             let bindings = controls.get(action);
             for binding in bindings {
-                ui.add(egui::Label::new(format!("{}", binding)).extend());
+                ui.add(egui::Label::new(String::from(t!(binding.to_string()))).extend());
             }
         }
     }
