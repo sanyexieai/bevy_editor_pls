@@ -39,8 +39,8 @@ impl Default for PanOrbitCamera {
             radius: 5.0,
             upside_down: false,
 
-            orbit_button: MouseButton::Left,
-            pan_button: MouseButton::Right,
+            orbit_button: MouseButton::Right,
+            pan_button: MouseButton::Middle,
         }
     }
 }
