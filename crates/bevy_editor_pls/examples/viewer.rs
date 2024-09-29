@@ -63,7 +63,7 @@ fn file_drag_and_drop_system(
                 let path = path_buf.to_string_lossy().to_string();
                 // 获取文件后缀
                 let file_extension = path.split('.').last().unwrap_or("");
-
+                // "svg"|"png"|"jpg"|"jpeg"|"bmp"|"gif"|"tga"|"hdr"|"pic"|"psd"|"tiff"|"webp"|"ico"|"cur"|"dds"|"pvr"|"ktx"|"astc"|"pkm"|"basis"|"gltf"|"glb"|"bin"|"json"|"ron"|"obj"|"mtl"|"stl"|"fbx"|"x3d"|"3mf"|"amf"|"ply"|"drc"|"vtk"|"vtp";
                 match file_extension {
                     "glb" | "gltf" => {
                         let scene_handle = asset_server.load(GltfAssetLabel::Scene(0).from_asset(path));
@@ -77,6 +77,18 @@ fn file_drag_and_drop_system(
                         let mesh_handle = asset_server.load(path);
                         commands.spawn(PbrBundle {
                             mesh: mesh_handle,
+                            ..default()
+                        });
+                    }
+                    "svg"|"png"|"jpg"|"jpeg"|"bmp"|"gif"|"tga"|"hdr"|"pic"|"psd"|"tiff"|"webp"|"ico" => {
+                        let mesh_handle = asset_server.load(path);
+                        commands.spawn(SpriteBundle {
+                            texture: mesh_handle,
+                            sprite: Sprite {
+                                color: Color::srgb(5.0, 5.0, 5.0),
+                                custom_size: Some(Vec2::splat(160.0)),
+                                ..default()
+                            },
                             ..default()
                         });
                     }
